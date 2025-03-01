@@ -1,0 +1,3 @@
+hdfs dfs -mkdir /health_monitoring
+hdfs dfs -put patients.csv /health_monitoring/
+hdfs dfs -ls /health_monitoring/

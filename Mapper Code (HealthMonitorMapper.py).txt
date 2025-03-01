@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+import sys
+
+for line in sys.stdin:
+    if "Patient_ID" in line:
+        continue
+    data = line.strip().split(",")
+    if len(data) != 5:
+        continue
+    patient_id, bp, sugar, cholesterol, hemoglobin = data
+    print(f"BP\t{bp}")
+    print(f"Sugar\t{sugar}")
+    print(f"Cholesterol\t{cholesterol}")
+    print(f"Hemoglobin\t{hemoglobin}")

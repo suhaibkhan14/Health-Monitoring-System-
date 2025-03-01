@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+import sys
+
+health_data = {"BP": [], "Sugar": [], "Cholesterol": [], "Hemoglobin": []}
+
+for line in sys.stdin:
+    key, value = line.strip().split("\t")
+    if key == "BP":
+        systolic, diastolic = map(int, value.split("/"))
+        health_data["BP"].append((systolic, diastolic))
+    else:
+        health_data[key].append(float(value))
+
+avg_sugar = sum(health_data["Sugar"]) / len(health_data["Sugar"])
+avg_cholesterol = sum(health_data["Cholesterol"]) / len(health_data["Cholesterol"])
+avg_hemoglobin = sum(health_data["Hemoglobin"]) / len(health_data["Hemoglobin"])
+avg_systolic = sum(x[0] for x in health_data["BP"]) / len(health_data["BP"])
+avg_diastolic = sum(x[1] for x in health_data["BP"]) / len(health_data["BP"])
+
+print(f"Average Sugar Level: {avg_sugar:.2f} mg/dL")
+print(f"Average Cholesterol Level: {avg_cholesterol:.2f} mg/dL")
+print(f"Average Hemoglobin Level: {avg_hemoglobin:.2f} g/dL")
+print(f"Average Blood Pressure: {avg_systolic:.0f}/{avg_diastolic:.0f} mmHg")

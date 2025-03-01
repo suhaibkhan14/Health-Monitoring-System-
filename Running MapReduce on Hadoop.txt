@@ -1,0 +1,5 @@
+hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-*.jar \
+-input /health_monitoring/patients.csv \
+-output /health_monitoring/output \
+-mapper HealthMonitorMapper.py \
+-reducer HealthMonitorReducer.py
